@@ -2,14 +2,21 @@
 
 ## Todo
 
-1. Connect to database and pull random quote
-2. Write logs to standard out
-3. Configuration Code
 4. Docker File
 5. CI/CD file
 6. Helm Chart
-7. Update template code
-8. Healthcheck
 9. Failure Code
-10. Secrets Manager code
 11. Different Environment Code
+
+
+Mongo setup
+
+docker run --name icanhazquotesdb \
+-p 27017:27017 \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-e MONGO_INITDB_ROOT_PASSWORD=secret \
+-e MONGO_INITDB_DATABASE=icanhazquotes \
+-v quotes-data:/data/db \
+-d mongo
+
+mongoimport --uri mongodb://localhost:27017/icanhazquotes --username=mongoadmin --authenticationDatabase "admin" --collection quotes --type json --file quotes.json --jsonArray
