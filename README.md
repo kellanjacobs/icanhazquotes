@@ -1,25 +1,21 @@
 # icanhazquotes
 
 ## Todo
+* CI/CD file
+* Helm Chart
+* Failure Code
+* Different Environment Code
 
-4. Docker File
-5. CI/CD file
-6. Helm Chart
-9. Failure Code
-11. Different Environment Code
+## Local Install
 
+commands must be run from root directory of this repo
 
-Mongo setup
-
-docker run --name icanhazquotesdb \
--p 27017:27017 \
--e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
--e MONGO_INITDB_ROOT_PASSWORD=secret \
--e MONGO_INITDB_DATABASE=icanhazquotes \
--v quotes-data:/data/db \
--d mongo
-
-mongoimport --uri mongodb://localhost:27017/icanhazquotes --username=mongoadmin --authenticationDatabase "admin" --collection quotes --type json --file quotes.json --jsonArray
+```
+docker-compose up -d
+docker cp quotes.json db:/
+docker exec -it db bash
+mongoimport --uri mongodb://localhost:27017/icanhazquotes --username=mongouser --authenticationDatabase "admin" --collection quotes --type json --file quotes.json --jsonArray
+```
 
 | ENV Variables | Default Value | Description |
 |---------------|---------------|-------------|

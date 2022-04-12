@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: db
+    image: mongo
+    restart: unless-stopped
+    environment:
+      - TZ=America/Los_Angeles
+      - MONGO_INITDB_ROOT_USERNAME=mongouser
+      - MONGO_INITDB_ROOT_PASSWORD=changeme
+      - MONGO_INITDB_DATABASE=icanhazquotes
+  icanhazquotes:
+    container_name: icanhazquotes
+    build: . 
+    restart: unless-stopped
+    ports:
+      - "9999:9999"
+    environment:
+      - TZ=America/Los_Angeles
+      - ICHQ_DB_HOST=db
+
