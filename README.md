@@ -31,4 +31,4 @@ mongoimport --uri mongodb://localhost:27017/icanhazquotes --username=mongoadmin 
 | ICHO_DB_AUTHSOURCE | auth | Authorization database for mongo user |
 | ICHO_DB_PORT | 27017 | Database Port | 
 | ICHO_DB_TIMEOUT | 2 | Database timeout |
-| ICHO_DB_DBNAME | icanhazqutes | Database to access data from |
+| ICHO_DB_DBNAME | icanhazquotes | Database to access data from |
