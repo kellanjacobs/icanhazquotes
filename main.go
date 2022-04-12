@@ -22,7 +22,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", indexHandler)
 	mux.HandleFunc("/health", healthHandler)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%d", c.App.Hostname, c.App.Port), mux))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%d", c.App.IP, c.App.Port), mux))
 
 }
 

@@ -8,8 +8,8 @@ import (
 )
 
 type AppConfig struct {
-	Hostname string
-	Port     int
+	IP   string
+	Port int
 	//FeatureFlag int
 }
 
@@ -30,7 +30,7 @@ type Config struct {
 
 func LoadConfig() (config Config, err error) {
 	viper.SetDefault("App.Port", 9999)
-	viper.SetDefault("App.Hostname", "0.0.0.0")
+	viper.SetDefault("App.IP", "0.0.0.0")
 	viper.SetDefault("DB.Host", "localhost")
 	viper.SetDefault("DB.User", "mongouser")
 	viper.SetDefault("DB.Password", "changeme")
@@ -45,7 +45,7 @@ func LoadConfig() (config Config, err error) {
 	viper.AutomaticEnv()
 
 	viper.BindEnv("App.Port", "ICHQ_APP_PORT")
-	viper.BindEnv("App.Hostname", "ICHQ_APP_HOSTNAME")
+	viper.BindEnv("App.Hostname", "ICHQ_APP_IP")
 	viper.BindEnv("DB.Host", "ICHQ_DB_HOST")
 	viper.BindEnv("DB.User", "ICHQ_DB_USER")
 	viper.BindEnv("DB.Password", "ICHQ_DB_PASSWORD")
